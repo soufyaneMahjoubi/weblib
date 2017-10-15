@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  weblib:
+    build: .
+    command: grunt serve
+    ports:
+      - "81:9000"
+    volumes:
+      - .:/app
+    environment:
+      - "VIRTUAL_HOST=weblib.dev"
+    depends_on:
+      - nginx-proxy
