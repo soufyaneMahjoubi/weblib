@@ -1,1 +1,15 @@
-
+<div class="col-lg-4" style="width: 600px; height: 305px">
+    <div uib-carousel active="active " interval="myInterval ">
+        <div uib-slide ng-repeat="slide in slides track by slide.id " index="slide.id">
+            <img ng-src="{{slide.image}} ">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <br />
+        <form ng-submit="Getimage()">
+            <input type="text" class="form-control" ng-model="search">
+            <input type="submit" value="Envoyer">
+        </form>
+        <br />Thème image
+    </div>
+</div>
